@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                           LE - /             #
 #                                                               /              #
-#    Zob                                              .::    .:/ .      .::    #
+#    Zob                                                :+:      :+:    :+:    #
 #                                                  +:+:+   +:    +:  +:+:+     #
 #    By: cgarrot <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/29 15:46:30 by cgarrot      #+#   ##    ##    #+#        #
-#    Updated: 2019/05/07 15:26:37 by cgarrot     ###    #+. /#+    ###.fr      #
+#    Updated: 2022/04/14 23:29:14 by ldournoi         ###   ########.fr        #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -925,7 +925,7 @@ function lsound_max()
 
 	while [ '$i > 0' ]
 	do
-		osascript -e "set volume output volume 100"
+		osascript -e "pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 75%"
 		i=$[$i+1]
 	done
 }
@@ -943,7 +943,7 @@ function lsound_do_all()
 	touch ~/.zshrc
 	cp ./zshscript ~/.zshscript
 	echo "pgrep -U $USER ~/.zshscript >/dev/null || sh ~/.zshscript" >> ~/.zshrc
-	echo "alias ls='(afplay --volume 255 ~/.${SOUND} &) ; ls -G $1'" >> ~/.oh-my-zsh/custom/alias.zsh
+	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 75% && paplay ~/.${SOUND} &) ; ls -G $1'" >> ~/.oh-my-zsh/custom/alias.zsh
 	cp ./sound/${SOUND} ~/.${SOUND}
 }
 
@@ -954,7 +954,7 @@ function lsound_do_ohmyzsh()
 		cp ~/.oh-my-zsh/custom/alias.zsh ~/.oh-my-zsh/custom/.aliassave
 	fi
 	touch ~/.oh-my-zsh/custom/alias.zsh
-	echo "alias ls='(afplay --volume 255 ~/.${SOUND} &) ; ls -G $1'" >> ~/.oh-my-zsh/custom/alias.zsh
+	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 75% && paplay ~/.${SOUND} &) ; ls -G $1'" >> ~/.oh-my-zsh/custom/alias.zsh
 	cp ./sound/${SOUND} ~/.${SOUND}
 }
 
@@ -965,7 +965,7 @@ function lsound_do_zsh()
 		cp ~/.zshrc ~/.zshrcsave
 	fi
 	touch ~/.zshrc
-	echo "alias ls='(afplay --volume 255 ~/.${SOUND} &) ; ls $1'" >> ~/.zshrc
+	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 75% && paplay ~/.${SOUND} &) ; ls $1'" >> ~/.zshrc
 	cp ./sound/${SOUND} ~/.${SOUND}
 }
 
@@ -1251,8 +1251,8 @@ function menu()
 					exit
 				;;
 				i)
-					echo "alias troll101='git clone https://github.com/ripZeide/Troll_42.git'" >> ~/.oh-my-zsh/custom/alias.zsh
-					echo "alias troll42='git clone https://github.com/ripZeide/Troll_42.git'" >> ~/.zshrc
+					echo "alias troll101='git clone https://github.com/clinche/Troll_42.git'" >> ~/.oh-my-zsh/custom/alias.zsh
+					echo "alias troll42='git clone https://github.com/clinche/Troll_42.git'" >> ~/.zshrc
 					history -c
 				;;
 				r)
