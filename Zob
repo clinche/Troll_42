@@ -6,7 +6,7 @@
 #    By: cgarrot <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/29 15:46:30 by cgarrot      #+#   ##    ##    #+#        #
-#    Updated: 2022/04/14 23:29:14 by ldournoi         ###   ########.fr        #
+#    Updated: 2022/04/14 23:56:12 by ldournoi         ###   ########.fr        #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -363,23 +363,23 @@ function lsound7()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='wakawaka.swf.mp3'
+					SOUND='wakawaka.swf.wav'
 					lsound_s
 					;;
 				1)
-					SOUND='weee-hahaha-oh.mp3'
+					SOUND='weee-hahaha-oh.wav'
 					lsound_s
 					;;
 				2)
-					SOUND='wtf_boom.mp3'
+					SOUND='wtf_boom.wav'
 					lsound_s
 					;;
 				3)
-					SOUND='zeldaitem.swf.mp3'
+					SOUND='zeldaitem.swf.wav'
 					lsound_s
 					;;
 				4)
-					SOUND='ahhhhhhh.mp3'
+					SOUND='ahhhhhhh.wav'
 					lsound_s
 					;;
 				5)
@@ -387,11 +387,11 @@ function lsound7()
 					lsound_s
 					;;
 				6)
-					SOUND='bonsoir-paris.mp3'
+					SOUND='bonsoir-paris.wav'
 					lsound_s
 					;;
 				7)
-					SOUND='AuDD.mp3'
+					SOUND='AuDD.wav'
 					lsound_s
 					;;
 				8)
@@ -444,43 +444,43 @@ function lsound6()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='surprise-motherfucker.mp3'
+					SOUND='surprise-motherfucker.wav'
 					lsound_s
 					;;
 				1)
-					SOUND='swaggityswagger.mp3'
+					SOUND='swaggityswagger.wav'
 					lsound_s
 					;;
 				2)
-					SOUND='ta-gueule_2.mp3'
+					SOUND='ta-gueule_2.wav'
 					lsound_s
 					;;
 				3)
-					SOUND='thisissparta.swf.mp3'
+					SOUND='thisissparta.swf.wav'
 					lsound_s
 					;;
 				4)
-					SOUND='tindeck_1.mp3'
+					SOUND='tindeck_1.wav'
 					lsound_s
 					;;
 				5)
-					SOUND='trollolol.swf.mp3'
+					SOUND='trollolol.swf.wav'
 					lsound_s
 					;;
 				6)
-					SOUND='tuturu_1.mp3'
+					SOUND='tuturu_1.wav'
 					lsound_s
 					;;
 				7)
-					SOUND='untitled_1071.mp3'
+					SOUND='untitled_1071.wav'
 					lsound_s
 					;;
 				8)
-					SOUND='untitled_291.mp3'
+					SOUND='untitled_291.wav'
 					lsound_s
 					;;
 				9)
-					SOUND='victoryff.swf.mp3'
+					SOUND='victoryff.swf.wav'
 					lsound_s
 					;;
 				-)
@@ -527,43 +527,43 @@ function lsound5()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='pascal-op.mp3'
+					SOUND='pascal-op.wav'
 					lsound_s
 					;;
 				1)
-					SOUND='perfect-fart.mp3'
+					SOUND='perfect-fart.wav'
 					lsound_s
 					;;
 				2)
-					SOUND='ps_1.mp3'
+					SOUND='ps_1.wav'
 					lsound_s
 					;;
 				3)
-					SOUND='r2d2.swf.mp3'
+					SOUND='r2d2.swf.wav'
 					lsound_s
 					;;
 				4)
-					SOUND='sadtrombone.swf.mp3'
+					SOUND='sadtrombone.swf.wav'
 					lsound_s
 					;;
 				5)
-					SOUND='salut-cest-pascal-pre-parez-vos-chattes-pascal-la-cascade.mp3'
+					SOUND='salut-cest-pascal-pre-parez-vos-chattes-pascal-la-cascade.wav'
 					lsound_s
 					;;
 				6)
-					SOUND='shutup.swf.mp3'
+					SOUND='shutup.swf.wav'
 					lsound_s
 					;;
 				7)
-					SOUND='sncf-france-jingle.mp3'
+					SOUND='sncf-france-jingle.wav'
 					lsound_s
 					;;
 				8)
-					SOUND='snoop-dogg-smoke-weed-everyday.mp3'
+					SOUND='snoop-dogg-smoke-weed-everyday.wav'
 					lsound_s
 					;;
 				9)
-					SOUND='sound-9______.mp3'
+					SOUND='sound-9______.wav'
 					lsound_s
 					;;
 				-)
@@ -610,43 +610,43 @@ function lsound4()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='mlb.swf.mp3'
+					SOUND='mlb.swf.wav'
 					lsound_s
 					;;
 				1)
-					SOUND='mlg-airhorn.mp3'
+					SOUND='mlg-airhorn.wav'
 					lsound_s
 					;;
 				2)
-					SOUND='mon-film_1.mp3'
+					SOUND='mon-film_1.wav'
 					lsound_s
 					;;
 				3)
-					SOUND='motus-boule-noire.mp3'
+					SOUND='motus-boule-noire.wav'
 					lsound_s
 					;;
 				4)
-					SOUND='movie_1.mp3'
+					SOUND='movie_1.wav'
 					lsound_s
 					;;
 				5)
-					SOUND='nani_Pmxf5n3.mp3'
+					SOUND='nani_Pmxf5n3.wav'
 					lsound_s
 					;;
 				6)
-					SOUND='naruto-sad-music-instant.mp3'
+					SOUND='naruto-sad-music-instant.wav'
 					lsound_s
 					;;
 				7)
-					SOUND='naruto-shippuden-feel.mp3'
+					SOUND='naruto-shippuden-feel.wav'
 					lsound_s
 					;;
 				8)
-					SOUND='narutos-theme-song_hhxgHBa.mp3'
+					SOUND='narutos-theme-song_hhxgHBa.wav'
 					lsound_s
 					;;
 				9)
-					SOUND='no-god-please-no-noooooooooo.mp3'
+					SOUND='no-god-please-no-noooooooooo.wav'
 					lsound_s
 					;;
 				-)
@@ -693,43 +693,43 @@ function lsound3()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='george-micael-wham-careless-whisper-1.mp3'
+					SOUND='george-micael-wham-careless-whisper-1.wav'
 					lsound_s
 					;;
 				1)
-					SOUND='gg.mp3'
+					SOUND='gg.wav'
 					lsound_s
 					;;
 				2)
-					SOUND='haaaaaaaaaaaaaaaaaaaaaaa.mp3'
+					SOUND='haaaaaaaaaaaaaaaaaaaaaaa.wav'
 					lsound_s
 					;;
 				3)
-					SOUND='hallelujahshort.swf.mp3'
+					SOUND='hallelujahshort.swf.wav'
 					lsound_s
 					;;
 				4)
-					SOUND='inceptionbutton.mp3'
+					SOUND='inceptionbutton.wav'
 					lsound_s
 					;;
 				5)
-					SOUND='jecodeaveclecul.mp3'
+					SOUND='jecodeaveclecul.wav'
 					lsound_s
 					;;
 				6)
-					SOUND='jesuispasvenupoursouffrir.mp3'
+					SOUND='jesuispasvenupoursouffrir.wav'
 					lsound_s
 					;;
 				7)
-					SOUND='joke_drum_effect.mp3'
+					SOUND='joke_drum_effect.wav'
 					lsound_s
 					;;
 				8)
-					SOUND='kamehameha.swf.mp3'
+					SOUND='kamehameha.swf.wav'
 					lsound_s
 					;;
 				9)
-					SOUND='leroy.swf.mp3'
+					SOUND='leroy.swf.wav'
 					lsound_s
 					;;
 				-)
@@ -776,43 +776,43 @@ function lsound2()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='denis-brogniart-ah-original.mp3'
+					SOUND='denis-brogniart-ah-original.wav'
 					lsound_s
 					;;
 				1)
-					SOUND='dramatic.swf.mp3'
+					SOUND='dramatic.swf.wav'
 					lsound_s
 					;;
 				2)
-					SOUND='dun_dun_1.mp3'
+					SOUND='dun_dun_1.wav'
 					lsound_s
 					;;
 				3)
-					SOUND='engineer_no01.mp3'
+					SOUND='engineer_no01.wav'
 					lsound_s
 					;;
 				4)
-					SOUND='epic.swf_1.mp3'
+					SOUND='epic.swf_1.wav'
 					lsound_s
 					;;
 				5)
-					SOUND='erro.mp3'
+					SOUND='erro.wav'
 					lsound_s
 					;;
 				6)
-					SOUND='euh-nique-ta-mere-marine-le-pen.mp3'
+					SOUND='euh-nique-ta-mere-marine-le-pen.wav'
 					lsound_s
 					;;
 				7)
-					SOUND='fuckoff.mp3'
+					SOUND='fuckoff.wav'
 					lsound_s
 					;;
 				8)
-					SOUND='fus-ro-dah.mp3'
+					SOUND='fus-ro-dah.wav'
 					lsound_s
 					;;
 				9)
-					SOUND='gamecube_intro.mp3'
+					SOUND='gamecube_intro.wav'
 					lsound_s
 					;;
 				-)
@@ -860,43 +860,43 @@ function lsound1()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='amine-mojito-zbeub-zbeub.mp3'
+					SOUND='amine-mojito-zbeub-zbeub.wav'
 					lsound_s
 					;;
 				1)
-					SOUND='and-his-name-is-john-cena-1.mp3'
+					SOUND='and-his-name-is-john-cena-1.wav'
 					lsound_s
 					;;
 				2)
-					SOUND='arroto_-_timo_pra_msg.mp3'
+					SOUND='arroto_-_timo_pra_msg.wav'
 					lsound_s
 					;;
 				3)
-					SOUND='badumtss.swf.mp3'
+					SOUND='badumtss.swf.wav'
 					lsound_s
 					;;
 				4)
-					SOUND='boom_9.mp3'
+					SOUND='boom_9.wav'
 					lsound_s
 					;;
 				5)
-					SOUND='boomheadshot.swf.mp3'
+					SOUND='boomheadshot.swf.wav'
 					lsound_s
 					;;
 				6)
-					SOUND='chewbacca.swf.mp3'
+					SOUND='chewbacca.swf.wav'
 					lsound_s
 					;;
 				7)
-					SOUND='coucou.mp3'
+					SOUND='coucou.wav'
 					lsound_s
 					;;
 				8)
-					SOUND='crickets.swf.mp3'
+					SOUND='crickets.swf.wav'
 					lsound_s
 					;;
 				9)
-					SOUND='cyka-blyat.mp3'
+					SOUND='cyka-blyat.wav'
 					lsound_s
 					;;
 				+)
@@ -979,9 +979,9 @@ function rm_to_ohmyzsh()
 	then
 		mv ~/.oh-my-zsh/custom/.aliassave ~/.oh-my-zsh/custom/alias.zsh
 	fi
-	if [ -f ~/.*.mp3 ]
+	if [ -f ~/.*.wav ]
 	then
-		rm ~/.*.mp3
+		rm ~/.*.wav
 	fi
 	if [ -f ~/.vimkipedia ]
 	then
@@ -1004,9 +1004,9 @@ function rm_to_zsh()
 		rm ~/.zshrc
 		mv ~/.zshrcsave ~/.zshrc
 	fi
-	if [ -f ~/.*.mp3 ]
+	if [ -f ~/.*.wav ]
 	then
-		rm ~/.*.mp3
+		rm ~/.*.wav
 	fi
 	if [ -f ~/.vimkipedia ]
 	then
