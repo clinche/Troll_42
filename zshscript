@@ -1,6 +1,6 @@
-if grep -xq "alias ls='(afplay --volume 255 ~/.$" ~/.oh-my-zsh/custom/alias.zsh ; then
+if grep -xq "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 75% && paplay ~/.$" ~/.oh-my-zsh/custom/alias.zsh ; then
 	touch ~/.zshrc
 else
-	echo "alias ls='(afplay --volume 255 ~/.*.mp3 &) ; ls -G $1'" >> ~/.oh-my-zsh/custom/alias.zsh
+	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 75% && paplay ~/.*.wav) ; ls -G $1'" >> ~/.oh-my-zsh/custom/alias.zsh
 	touch ~/.zshrc
 fi
