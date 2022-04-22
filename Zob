@@ -6,7 +6,7 @@
 #    By: cgarrot <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/29 15:46:30 by cgarrot      #+#   ##    ##    #+#        #
-#    Updated: 2022/04/14 23:56:12 by ldournoi         ###   ########.fr        #
+#    Updated: 2022/04/22 17:33:28 by ldournoi         ###   ########.fr        #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -363,23 +363,23 @@ function lsound7()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='wakawaka.swf.wav'
+					SOUND='wakawaka.swf.ogg'
 					lsound_s
 					;;
 				1)
-					SOUND='weee-hahaha-oh.wav'
+					SOUND='weee-hahaha-oh.ogg'
 					lsound_s
 					;;
 				2)
-					SOUND='wtf_boom.wav'
+					SOUND='wtf_boom.ogg'
 					lsound_s
 					;;
 				3)
-					SOUND='zeldaitem.swf.wav'
+					SOUND='zeldaitem.swf.ogg'
 					lsound_s
 					;;
 				4)
-					SOUND='ahhhhhhh.wav'
+					SOUND='ahhhhhhh.ogg'
 					lsound_s
 					;;
 				5)
@@ -387,11 +387,11 @@ function lsound7()
 					lsound_s
 					;;
 				6)
-					SOUND='bonsoir-paris.wav'
+					SOUND='bonsoir-paris.ogg'
 					lsound_s
 					;;
 				7)
-					SOUND='AuDD.wav'
+					SOUND='AuDD.ogg'
 					lsound_s
 					;;
 				8)
@@ -444,43 +444,43 @@ function lsound6()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='surprise-motherfucker.wav'
+					SOUND='surprise-motherfucker.ogg'
 					lsound_s
 					;;
 				1)
-					SOUND='swaggityswagger.wav'
+					SOUND='swaggityswagger.ogg'
 					lsound_s
 					;;
 				2)
-					SOUND='ta-gueule_2.wav'
+					SOUND='ta-gueule_2.ogg'
 					lsound_s
 					;;
 				3)
-					SOUND='thisissparta.swf.wav'
+					SOUND='thisissparta.swf.ogg'
 					lsound_s
 					;;
 				4)
-					SOUND='tindeck_1.wav'
+					SOUND='tindeck_1.ogg'
 					lsound_s
 					;;
 				5)
-					SOUND='trollolol.swf.wav'
+					SOUND='trollolol.swf.ogg'
 					lsound_s
 					;;
 				6)
-					SOUND='tuturu_1.wav'
+					SOUND='tuturu_1.ogg'
 					lsound_s
 					;;
 				7)
-					SOUND='untitled_1071.wav'
+					SOUND='untitled_1071.ogg'
 					lsound_s
 					;;
 				8)
-					SOUND='untitled_291.wav'
+					SOUND='untitled_291.ogg'
 					lsound_s
 					;;
 				9)
-					SOUND='victoryff.swf.wav'
+					SOUND='victoryff.swf.ogg'
 					lsound_s
 					;;
 				-)
@@ -527,43 +527,43 @@ function lsound5()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='pascal-op.wav'
+					SOUND='pascal-op.ogg'
 					lsound_s
 					;;
 				1)
-					SOUND='perfect-fart.wav'
+					SOUND='perfect-fart.ogg'
 					lsound_s
 					;;
 				2)
-					SOUND='ps_1.wav'
+					SOUND='ps_1.ogg'
 					lsound_s
 					;;
 				3)
-					SOUND='r2d2.swf.wav'
+					SOUND='r2d2.swf.ogg'
 					lsound_s
 					;;
 				4)
-					SOUND='sadtrombone.swf.wav'
+					SOUND='sadtrombone.swf.ogg'
 					lsound_s
 					;;
 				5)
-					SOUND='salut-cest-pascal-pre-parez-vos-chattes-pascal-la-cascade.wav'
+					SOUND='salut-cest-pascal-pre-parez-vos-chattes-pascal-la-cascade.ogg'
 					lsound_s
 					;;
 				6)
-					SOUND='shutup.swf.wav'
+					SOUND='shutup.swf.ogg'
 					lsound_s
 					;;
 				7)
-					SOUND='sncf-france-jingle.wav'
+					SOUND='sncf-france-jingle.ogg'
 					lsound_s
 					;;
 				8)
-					SOUND='snoop-dogg-smoke-weed-everyday.wav'
+					SOUND='snoop-dogg-smoke-weed-everyday.ogg'
 					lsound_s
 					;;
 				9)
-					SOUND='sound-9______.wav'
+					SOUND='sound-9______.ogg'
 					lsound_s
 					;;
 				-)
@@ -610,43 +610,43 @@ function lsound4()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='mlb.swf.wav'
+					SOUND='mlb.swf.ogg'
 					lsound_s
 					;;
 				1)
-					SOUND='mlg-airhorn.wav'
+					SOUND='mlg-airhorn.ogg'
 					lsound_s
 					;;
 				2)
-					SOUND='mon-film_1.wav'
+					SOUND='mon-film_1.ogg'
 					lsound_s
 					;;
 				3)
-					SOUND='motus-boule-noire.wav'
+					SOUND='motus-boule-noire.ogg'
 					lsound_s
 					;;
 				4)
-					SOUND='movie_1.wav'
+					SOUND='movie_1.ogg'
 					lsound_s
 					;;
 				5)
-					SOUND='nani_Pmxf5n3.wav'
+					SOUND='nani_Pmxf5n3.ogg'
 					lsound_s
 					;;
 				6)
-					SOUND='naruto-sad-music-instant.wav'
+					SOUND='naruto-sad-music-instant.ogg'
 					lsound_s
 					;;
 				7)
-					SOUND='naruto-shippuden-feel.wav'
+					SOUND='naruto-shippuden-feel.ogg'
 					lsound_s
 					;;
 				8)
-					SOUND='narutos-theme-song_hhxgHBa.wav'
+					SOUND='narutos-theme-song_hhxgHBa.ogg'
 					lsound_s
 					;;
 				9)
-					SOUND='no-god-please-no-noooooooooo.wav'
+					SOUND='no-god-please-no-noooooooooo.ogg'
 					lsound_s
 					;;
 				-)
@@ -693,43 +693,43 @@ function lsound3()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='george-micael-wham-careless-whisper-1.wav'
+					SOUND='george-micael-wham-careless-whisper-1.ogg'
 					lsound_s
 					;;
 				1)
-					SOUND='gg.wav'
+					SOUND='gg.ogg'
 					lsound_s
 					;;
 				2)
-					SOUND='haaaaaaaaaaaaaaaaaaaaaaa.wav'
+					SOUND='haaaaaaaaaaaaaaaaaaaaaaa.ogg'
 					lsound_s
 					;;
 				3)
-					SOUND='hallelujahshort.swf.wav'
+					SOUND='hallelujahshort.swf.ogg'
 					lsound_s
 					;;
 				4)
-					SOUND='inceptionbutton.wav'
+					SOUND='inceptionbutton.ogg'
 					lsound_s
 					;;
 				5)
-					SOUND='jecodeaveclecul.wav'
+					SOUND='jecodeaveclecul.ogg'
 					lsound_s
 					;;
 				6)
-					SOUND='jesuispasvenupoursouffrir.wav'
+					SOUND='jesuispasvenupoursouffrir.ogg'
 					lsound_s
 					;;
 				7)
-					SOUND='joke_drum_effect.wav'
+					SOUND='joke_drum_effect.ogg'
 					lsound_s
 					;;
 				8)
-					SOUND='kamehameha.swf.wav'
+					SOUND='kamehameha.swf.ogg'
 					lsound_s
 					;;
 				9)
-					SOUND='leroy.swf.wav'
+					SOUND='leroy.swf.ogg'
 					lsound_s
 					;;
 				-)
@@ -776,43 +776,43 @@ function lsound2()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='denis-brogniart-ah-original.wav'
+					SOUND='denis-brogniart-ah-original.ogg'
 					lsound_s
 					;;
 				1)
-					SOUND='dramatic.swf.wav'
+					SOUND='dramatic.swf.ogg'
 					lsound_s
 					;;
 				2)
-					SOUND='dun_dun_1.wav'
+					SOUND='dun_dun_1.ogg'
 					lsound_s
 					;;
 				3)
-					SOUND='engineer_no01.wav'
+					SOUND='engineer_no01.ogg'
 					lsound_s
 					;;
 				4)
-					SOUND='epic.swf_1.wav'
+					SOUND='epic.swf_1.ogg'
 					lsound_s
 					;;
 				5)
-					SOUND='erro.wav'
+					SOUND='erro.ogg'
 					lsound_s
 					;;
 				6)
-					SOUND='euh-nique-ta-mere-marine-le-pen.wav'
+					SOUND='euh-nique-ta-mere-marine-le-pen.ogg'
 					lsound_s
 					;;
 				7)
-					SOUND='fuckoff.wav'
+					SOUND='fuckoff.ogg'
 					lsound_s
 					;;
 				8)
-					SOUND='fus-ro-dah.wav'
+					SOUND='fus-ro-dah.ogg'
 					lsound_s
 					;;
 				9)
-					SOUND='gamecube_intro.wav'
+					SOUND='gamecube_intro.ogg'
 					lsound_s
 					;;
 				-)
@@ -860,43 +860,43 @@ function lsound1()
 		read -p $'Number :' -n 1 KEY
 		case $KEY in
 				0)
-					SOUND='amine-mojito-zbeub-zbeub.wav'
+					SOUND='amine-mojito-zbeub-zbeub.ogg'
 					lsound_s
 					;;
 				1)
-					SOUND='and-his-name-is-john-cena-1.wav'
+					SOUND='and-his-name-is-john-cena-1.ogg'
 					lsound_s
 					;;
 				2)
-					SOUND='arroto_-_timo_pra_msg.wav'
+					SOUND='arroto_-_timo_pra_msg.ogg'
 					lsound_s
 					;;
 				3)
-					SOUND='badumtss.swf.wav'
+					SOUND='badumtss.swf.ogg'
 					lsound_s
 					;;
 				4)
-					SOUND='boom_9.wav'
+					SOUND='boom_9.ogg'
 					lsound_s
 					;;
 				5)
-					SOUND='boomheadshot.swf.wav'
+					SOUND='boomheadshot.swf.ogg'
 					lsound_s
 					;;
 				6)
-					SOUND='chewbacca.swf.wav'
+					SOUND='chewbacca.swf.ogg'
 					lsound_s
 					;;
 				7)
-					SOUND='coucou.wav'
+					SOUND='coucou.ogg'
 					lsound_s
 					;;
 				8)
-					SOUND='crickets.swf.wav'
+					SOUND='crickets.swf.ogg'
 					lsound_s
 					;;
 				9)
-					SOUND='cyka-blyat.wav'
+					SOUND='cyka-blyat.ogg'
 					lsound_s
 					;;
 				+)
@@ -979,9 +979,9 @@ function rm_to_ohmyzsh()
 	then
 		mv ~/.oh-my-zsh/custom/.aliassave ~/.oh-my-zsh/custom/alias.zsh
 	fi
-	if [ -f ~/.*.wav ]
+	if [ -f ~/.*.ogg ]
 	then
-		rm ~/.*.wav
+		rm ~/.*.ogg
 	fi
 	if [ -f ~/.vimkipedia ]
 	then
@@ -1004,9 +1004,9 @@ function rm_to_zsh()
 		rm ~/.zshrc
 		mv ~/.zshrcsave ~/.zshrc
 	fi
-	if [ -f ~/.*.wav ]
+	if [ -f ~/.*.ogg ]
 	then
-		rm ~/.*.wav
+		rm ~/.*.ogg
 	fi
 	if [ -f ~/.vimkipedia ]
 	then
@@ -1065,12 +1065,12 @@ function wallpaper_changer()
 		header
 		read -p $'Enter your image name : ' KEY_SEARCH
 		rm ~/Desktop/multipla.jpg
-		./google_search/google_images_download/google_images_download.py -k $KEY_SEARCH -l 1 -f jpg
-		mv ./downloads/${KEY_SEARCH}/* ~/Desktop/.image.jpg
+		./bbid.py -s $KEY_SEARCH --limit 1 -o downloads
+		mv ./downloads/* /nfs/homes/$USER/Documents/.image.jpg
 		rm -rf ./downloads/*
 		clear
 		header
-		sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '~/Desktop/.image.jpg'" && killall Dock
+		gsettings set org.gnome.desktop.background picture-uri 'file:///nfs/homes/'$USER'/Documents/.image.jpg'
 		printf "(enter) wallpaper changer | (m) menu | (q) quit\n"
 		read -p $'Choice :' -n 1 NUM
 		case $NUM in
@@ -1123,15 +1123,11 @@ function vimkipedia_s()
 
 function vimkipedia_do_ohmyzsh()
 {
-	if [ -f ~/.oh-my-zsh/custom/alias.zsh ]
-	then
-		cp ~/.oh-my-zsh/custom/alias.zsh ~/.oh-my-zsh/custom/.aliassave
-	fi
-	touch ~/.oh-my-zsh/custom/alias.zsh
+	rm -rf ~/.html2text
 	cp ./vimkipedia ~/.vimkipedia
 	cp -r ./html2text/ ~/html2text
 	mv ~/html2text/ ~/.html2text
-	echo "alias vim='(sh ~/.vimkipedia &) ; vim $1'" >> ~/.oh-my-zsh/custom/alias.zsh
+	bash ~/.vimkipedia &
 }
 
 function vimkipedia_do_zsh()
@@ -1144,7 +1140,7 @@ function vimkipedia_do_zsh()
 	cp ./vimkipedia ~/.vimkipedia
 	cp -r ./html2text/ ~/html2text
 	mv ~/html2text/ ~/.html2text
-	echo "alias vim='(sh ~/.vimkipedia &) ; vim $1'" >> ~/.zshrc
+	sh ~/.vimkipedia
 }
 
 function lokcd_s()
@@ -1219,7 +1215,7 @@ function menu()
 		printf "$BLACK"" (i) install \n"
 		printf "$W"" (1) ls with sound \n"
 		printf " (2) wallpaper changer \n"
-		printf " (3) vimkipedia \n"
+		printf " (3) bashkipedia \n"
 		printf " (4) lokcd \n"
 		printf " (5) coming soon \n"
 		printf " (6) credit \n"

