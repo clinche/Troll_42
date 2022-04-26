@@ -6,7 +6,7 @@
 #    By: cgarrot <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/29 15:46:30 by cgarrot      #+#   ##    ##    #+#        #
-#    Updated: 2022/04/26 15:23:42 by snourry          ###   ########.fr        #
+#    Updated: 2022/04/26 20:10:57 by ldournoi         ###   ########.fr        #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -980,9 +980,9 @@ function rm_to_ohmyzsh()
 	then
 		mv ~/.oh-my-zsh/custom/.aliassave ~/.oh-my-zsh/custom/alias.zsh
 	fi
-	if [ -f ~/.*.ogg ]
+	if [ -f ~/*.ogg ]
 	then
-		rm ~/.*.ogg
+		rm ~/*.ogg
 	fi
 	if [ -f ~/.vimkipedia ]
 	then
