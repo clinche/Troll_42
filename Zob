@@ -396,6 +396,7 @@ function lsound7()
 					;;
 				8)
 					SOUND='sardoche-cetait-sur.ogg'
+					lsound_s
 					;;
 				9)
 					SOUND=''
