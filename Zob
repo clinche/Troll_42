@@ -6,7 +6,7 @@
 #    By: cgarrot <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/29 15:46:30 by cgarrot      #+#   ##    ##    #+#        #
-#    Updated: 2022/04/25 15:21:38 by ldournoi         ###   ########.fr        #
+#    Updated: 2022/04/26 15:23:42 by snourry          ###   ########.fr        #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -354,7 +354,7 @@ function lsound7()
 		printf " (5) booba_armand\n"
 		printf " (6) bonsoir-paris\n"
 		printf " (7) AuDD\n"
-		printf " (8) \n"
+		printf " (8) Sardoche-cetait-sur\n"
 		printf " (9) \n\n"
 
 		printf " (-) page 6 \n"
@@ -395,7 +395,7 @@ function lsound7()
 					lsound_s
 					;;
 				8)
-					SOUND=''
+					SOUND='sardoche-cetait-sur.ogg'
 					;;
 				9)
 					SOUND=''
