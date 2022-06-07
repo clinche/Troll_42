@@ -6,7 +6,7 @@
 #    By: cgarrot <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/29 15:46:30 by cgarrot      #+#   ##    ##    #+#        #
-#    Updated: 2022/04/26 20:10:57 by ldournoi         ###   ########.fr        #
+#    Updated: 2022/06/07 02:00:50 by ldournoi         ###   ########.fr        #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -933,6 +933,16 @@ function lsound_max()
 
 function lsound_do_all()
 {
+	if grep -q "pactl" ~/.zshrc ;
+	then
+		printf "\nyou shouldnt do this more than one time!\n"
+		return
+	fi
+	if grep -q "pactl" ~/.oh-my-zsh/custom/alias.zsh ;
+	then
+		printf "\nyou shouldnt do this more than one time!\n"
+		return
+	fi
 	if [ -f ~/.zshrc ]
 	then
 		cp ~/.zshrc ~/.zshrcsave
@@ -952,7 +962,21 @@ function lsound_do_ohmyzsh()
 {
 	if [ -f ~/.oh-my-zsh/custom/alias.zsh ]
 	then
-		cp ~/.oh-my-zsh/custom/alias.zsh ~/.oh-my-zsh/custom/.aliassave
+		if grep -q "pactl" ~/.oh-my-zsh/custom/alias.zsh ;
+		then
+			printf "\nyou shouldnt do this more than one time!\n"
+			return
+		fi
+	cp ~/.oh-my-zsh/custom/alias.zsh ~/.oh-my-zsh/custom/.aliassave
+	fi
+	if [ -f ~/.zshrc ]
+	then
+		if grep -q "pactl" ~/.zshrc ;
+		then
+			print "\nyou shouldnt do this more than one time!\n"
+			return
+		fi
+		cp ~/.zshrc ~/.zshrcsave
 	fi
 	touch ~/.oh-my-zsh/custom/alias.zsh
 	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 125% && paplay ~/.${SOUND} &) ; ls -G $1 #zobls'" >> ~/.oh-my-zsh/custom/alias.zsh
@@ -961,8 +985,22 @@ function lsound_do_ohmyzsh()
 
 function lsound_do_zsh()
 {
+	if [ -f ~/.oh-my-zsh/custom/alias.zsh ]
+	then
+		if grep -q "pactl" ~/.oh-my-zsh/custom/alias.zsh ;
+		then
+			printf "\nyou shouldnt do this more than one time!\n"
+			return
+		fi
+	cp ~/.oh-my-zsh/custom/alias.zsh ~/.oh-my-zsh/custom/.aliassave
+	fi
 	if [ -f ~/.zshrc ]
 	then
+		if grep -q "pactl" ~/.zshrc ;
+		then
+			print "\nyou shouldnt do this more than one time!\n"
+			return
+		fi
 		cp ~/.zshrc ~/.zshrcsave
 	fi
 	touch ~/.zshrc
@@ -980,7 +1018,9 @@ function rm_to_ohmyzsh()
 	then
 		mv ~/.oh-my-zsh/custom/.aliassave ~/.oh-my-zsh/custom/alias.zsh
 	fi
-	if [ -f ~/*.ogg ]
+	shopt -s dotglob
+	NUM=$(ls ~/*.ogg | wc -l)
+	if [ $NUM -gt 0 ]
 	then
 		rm ~/*.ogg
 	fi
@@ -1005,9 +1045,11 @@ function rm_to_zsh()
 		rm ~/.zshrc
 		mv ~/.zshrcsave ~/.zshrc
 	fi
-	if [ -f ~/.*.ogg ]
+	shopt -s dotglob
+	NUM=$(ls ~/*.ogg | wc -l)
+	if [ $NUM -gt 0 ]
 	then
-		rm ~/.*.ogg
+		rm ~/*.ogg
 	fi
 	if [ -f ~/.vimkipedia ]
 	then
@@ -1030,7 +1072,9 @@ function lsound_s()
 		header
 		printf " (1) oh my zsh \n"
 		printf " (2) zsh \n"
-		printf " (3) all time \n\n"
+		#disable all time because it add countless aliases that we can't delete
+		#TODO: add a way to delete all aliases in files 
+		#printf " (3) all time \n\n"
 
 		printf " (m) go to menu | (q) quit\n"
 		read -p $'Number : ' -n 1 KEY
@@ -1041,9 +1085,9 @@ function lsound_s()
 				2)
 					lsound_do_zsh
 				;;
-				3)
-					lsound_do_all
-				;;
+		#		3)
+		#			lsound_do_all
+		#		;;
 				m)
 					menu
 					;;
