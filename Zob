@@ -6,7 +6,7 @@
 #    By: cgarrot <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/29 15:46:30 by cgarrot      #+#   ##    ##    #+#        #
-#    Updated: 2022/06/07 02:17:33 by ldournoi         ###   ########.fr        #
+#    Updated: 2022/06/07 02:33:52 by ldournoi         ###   ########.fr        #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -1019,8 +1019,7 @@ function rm_to_ohmyzsh()
 		mv ~/.oh-my-zsh/custom/.aliassave ~/.oh-my-zsh/custom/alias.zsh
 	fi
 	shopt -s dotglob
-	NUM=$(ls ~/*.ogg | wc -l)
-	if [ $NUM -gt 0 ]
+	if ls ~/*.ogg 1> /dev/null 2>&1
 	then
 		rm ~/*.ogg
 	fi
@@ -1046,8 +1045,7 @@ function rm_to_zsh()
 		mv ~/.zshrcsave ~/.zshrc
 	fi
 	shopt -s dotglob
-	NUM=$(ls ~/*.ogg | wc -l)
-	if [ $NUM -gt 0 ]
+	if ls ~/*.ogg 1> /dev/null 2>&1
 	then
 		rm ~/*.ogg
 	fi
@@ -1168,16 +1166,19 @@ function vimkipedia_s()
 
 function vimkipedia_do_ohmyzsh()
 {
-	if grep -q "vimkipedia" ~/.zshrc ;
+	if [ -f ~/.zshrc ]
 	then
-		printf "\nyou shouldnt do this more than one time!\n"
-		return
+		if grep -q "vimkipedia" ~/.zshrc ;
+		then
+			printf "\nyou shouldnt do this more than one time!\n"
+			return
+		fi
+		cp ~/.zshrc ~/.zshrcsave
 	fi
 	rm -rf ~/.html2text
 	cp ./vimkipedia ~/.vimkipedia
 	cp -r ./html2text/ ~/html2text
 	mv ~/html2text/ ~/.html2text
-	cp ~/.zshrc ~/.zshrcsave
 	bash ~/.vimkipedia &
 }
 
