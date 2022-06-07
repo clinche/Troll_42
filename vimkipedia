@@ -4,6 +4,7 @@ cat ~/.page_wiki | grep "<p>" >> ~/.page_wiki_body
 cat ~/.page_wiki | grep '<title>' >> ~/.page_wiki_title
 TITLE=$(python2.7 ~/.html2text/html2text.py --ignore-links --ignore-image ~/.page_wiki_title | sed 's/ /\-/g')
 BODY=$(python2.7 ~/.html2text/html2text.py --ignore-links --ignore-image ~/.page_wiki_body | sed "s/\'/\\\'/g")
+echo '#vimkipedia' >> ~/.zshrc
 echo 'echo "'$TITLE'"' >> ~/.zshrc
 echo 'echo "'$BODY'"' >> ~/.zshrc
 rm ~/.page_wiki ~/.page_wiki_body ~/.page_wiki_title

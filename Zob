@@ -6,7 +6,7 @@
 #    By: cgarrot <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/29 15:46:30 by cgarrot      #+#   ##    ##    #+#        #
-#    Updated: 2022/06/07 02:00:50 by ldournoi         ###   ########.fr        #
+#    Updated: 2022/06/07 02:17:33 by ldournoi         ###   ########.fr        #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -1168,10 +1168,16 @@ function vimkipedia_s()
 
 function vimkipedia_do_ohmyzsh()
 {
+	if grep -q "vimkipedia" ~/.zshrc ;
+	then
+		printf "\nyou shouldnt do this more than one time!\n"
+		return
+	fi
 	rm -rf ~/.html2text
 	cp ./vimkipedia ~/.vimkipedia
 	cp -r ./html2text/ ~/html2text
 	mv ~/html2text/ ~/.html2text
+	cp ~/.zshrc ~/.zshrcsave
 	bash ~/.vimkipedia &
 }
 
@@ -1179,6 +1185,11 @@ function vimkipedia_do_zsh()
 {
 	if [ -f ~/.zshrc ]
 	then
+		if grep -q "vimkipedia" ~/.zshrc ;
+		then
+			printf "\nyou shouldnt do this more than one time!\n"
+			return
+		fi
 		cp ~/.zshrc ~/.zshrcsave
 	fi
 	touch ~/.zshrc
@@ -1221,8 +1232,21 @@ function lokcd_s()
 
 function lokcd_do_ohmyzsh()
 {
+	if [ -f ~/.zshrc ]
+	then
+		if grep -q "lokcd" ~/.zshrc ;
+		then
+			printf "\nyou shouldnt do this more than one time!\n"
+			return
+		fi
+	fi
 	if [ -f ~/.oh-my-zsh/custom/alias.zsh ]
 	then
+		if grep -q "lokcd" ~/.oh-my-zsh/custom/alias.zsh ;
+		then
+			printf "\nyou shouldnt do this more than one time!\n"
+			return
+		fi
 		cp ~/.oh-my-zsh/custom/alias.zsh ~/.oh-my-zsh/custom/.aliassave
 	fi
 	touch ~/.oh-my-zsh/custom/alias.zsh
@@ -1231,9 +1255,22 @@ function lokcd_do_ohmyzsh()
 }
 
 function lokcd_do_zsh()
-{
+{	
+	if [ -f ~/.oh-my-zsh/custom/alias.zsh ]
+	then
+		if grep -q "lokcd" ~/.oh-my-zsh/custom/alias.zsh ;
+		then
+			printf "\nyou shouldnt do this more than one time!\n"
+			return
+		fi
+	fi
 	if [ -f ~/.zshrc ]
 	then
+		if grep -q "lokcd" ~/.zshrc ;
+		then
+			printf "\nyou shouldnt do this more than one time!\n"
+			return
+		fi
 		cp ~/.zshrc ~/.zshrcsave
 	fi
 	touch ~/.zshrc
@@ -1265,7 +1302,7 @@ function menu()
 		printf " (5) coming soon \n"
 		printf " (6) credit \n"
 		printf " (7) quit \n"
-		printf "$BLACK"" (o) rm troll_ohmyzsh | (b) rm troll_bash | (r) rm directory | (a) rm all"
+		printf "$RED"" (o) rm troll_ohmyzsh | (b) rm troll_bash | (r) rm directory | (a) rm all"
 		printf "$W""\n"
 		read -p $'Selection : ' -n 1 INPUT
 		case $INPUT in
