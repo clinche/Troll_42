@@ -6,7 +6,7 @@
 #    By: cgarrot <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/29 15:46:30 by cgarrot      #+#   ##    ##    #+#        #
-#    Updated: 2022/06/07 02:33:52 by ldournoi         ###   ########.fr        #
+#    Updated: 2022/06/07 02:41:18 by ldournoi         ###   ########.fr        #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -1179,6 +1179,7 @@ function vimkipedia_do_ohmyzsh()
 	cp ./vimkipedia ~/.vimkipedia
 	cp -r ./html2text/ ~/html2text
 	mv ~/html2text/ ~/.html2text
+	echo '#vimkipedia' >> ~/.zshrc
 	bash ~/.vimkipedia &
 }
 
@@ -1197,6 +1198,7 @@ function vimkipedia_do_zsh()
 	cp ./vimkipedia ~/.vimkipedia
 	cp -r ./html2text/ ~/html2text
 	mv ~/html2text/ ~/.html2text
+	echo '#vimkipedia' >> ~/.zshrc
 	sh ~/.vimkipedia
 }
 
