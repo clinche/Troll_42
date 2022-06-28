@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 15:46:30 by cgarrot           #+#    #+#              #
-#    Updated: 2022/06/29 00:48:07 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/06/29 01:11:37 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -1308,8 +1308,8 @@ function menu()
 		printf " (4) lokcd \n"
 		printf " (5) coming soon \n"
 		printf " (6) credit \n"
-		printf " (7) quit \n"
-		printf "$RED"" (c) clean troll"
+		printf " (q) quit \n"
+		printf "$RED""(r) rm directory | (c) clean troll"
 		printf "$W""\n"
 		read -p $'Selection : ' -n 1 INPUT
 		case $INPUT in
@@ -1328,18 +1328,6 @@ function menu()
 				;;
 				6)
 					multipla
-				;;
-				7)
-					history -c
-					clear
-					if [ ${CURRENT_SHELL} == "zsh" ]; then
-						exec zsh
-					elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
-						exec zsh
-					else
-						exec bash
-					fi
-					exit
 				;;
 				i)
 					if [ ${CURRENT_SHELL} == "zsh" ]; then
@@ -1362,18 +1350,6 @@ function menu()
 					else
 						exec bash
 					fi
-				;;
-				a)
-					rm -rf ../Troll_42
-					if [ ${CURRENT_SHELL} == "zsh" ]; then
-						rm_to_zsh
-					elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
-						rm_to_ohmyzsh
-					else
-						exec bash
-					fi
-					history -c
-					clear
 				;;
 				q)
 					history -c
