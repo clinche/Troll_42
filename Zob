@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 15:46:30 by cgarrot           #+#    #+#              #
-#    Updated: 2022/06/29 01:11:37 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/06/29 01:16:23 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -973,7 +973,7 @@ function lsound_do_ohmyzsh()
 	then
 		if grep -q "pactl" ~/.zshrc ;
 		then
-			print "\nyou shouldnt do this more than one time!\n"
+			printf "\nyou shouldnt do this more than one time!\n"
 			return
 		fi
 		cp ~/.zshrc ~/.zshrcsave
@@ -998,7 +998,7 @@ function lsound_do_zsh()
 	then
 		if grep -q "pactl" ~/.zshrc ;
 		then
-			print "\nyou shouldnt do this more than one time!\n"
+			printf "\nyou shouldnt do this more than one time!\n"
 			return
 		fi
 		cp ~/.zshrc ~/.zshrcsave
