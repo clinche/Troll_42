@@ -1,15 +1,15 @@
 # **************************************************************************** #
-#                                                           LE - /             #
-#                                                               /              #
+#                                                                              #
+#                                                         :::      ::::::::    #
 #    Zob                                                :+:      :+:    :+:    #
-#                                                  +:+:+   +:    +:  +:+:+     #
-#    By: cgarrot <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
-#                                                  #+#   #+    #+    #+#       #
-#    Created: 2019/01/29 15:46:30 by cgarrot      #+#   ##    ##    #+#        #
-#    Updated: 2022/06/07 02:41:18 by ldournoi         ###   ########.fr        #
-#                                                          /                   #
-#                                                         /                    #
+#                                                     +:+ +:+         +:+      #
+#    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/01/29 15:46:30 by cgarrot           #+#    #+#              #
+#    Updated: 2022/06/29 00:48:07 by brda-sil         ###   ########.fr        #
+#                                                                              #
 # **************************************************************************** #
+
 
 # Text format
 _DEF='\033[0m'
@@ -1068,21 +1068,21 @@ function lsound_s()
 	while :
 	do
 		header
-		printf " (1) oh my zsh \n"
-		printf " (2) zsh \n"
+		if [ ${CURRENT_SHELL} == "zsh" ]; then
+			lsound_do_zsh
+		elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
+			lsound_do_ohmyzsh
+		else
+			printf "bash not implented yet\n"
+		fi
 		#disable all time because it add countless aliases that we can't delete
-		#TODO: add a way to delete all aliases in files 
+		#TODO: add a way to delete all aliases in files
 		#printf " (3) all time \n\n"
 
+		printf "${SOUND} installed !\n"
 		printf " (m) go to menu | (q) quit\n"
 		read -p $'Number : ' -n 1 KEY
 		case $KEY in
-				1)
-					lsound_do_ohmyzsh
-				;;
-				2)
-					lsound_do_zsh
-				;;
 		#		3)
 		#			lsound_do_all
 		#		;;
@@ -1138,18 +1138,17 @@ function vimkipedia_s()
 	while :
 	do
 		header
-		printf " (1) oh my zsh \n"
-		printf " (2) zsh \n\n"
-
+		if [ ${CURRENT_SHELL} == "zsh" ]; then
+			vimkipedia_do_zsh
+		elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
+			vimkipedia_do_ohmyzsh
+		else
+			printf "bash not implented yet\n"
+		fi
+		printf "vimkipedia installed !\n"
 		printf " (m) go to menu | (q) quit\n"
 		read -p $'Number : ' -n 1 KEY
 		case $KEY in
-				1)
-					vimkipedia_do_ohmyzsh
-				;;
-				2)
-					vimkipedia_do_zsh
-				;;
 				m)
 					menu
 					;;
@@ -1207,9 +1206,14 @@ function lokcd_s()
 	while :
 	do
 		header
-		printf " (1) oh my zsh \n"
-		printf " (2) zsh \n\n"
-
+		if [ ${CURRENT_SHELL} == "zsh" ]; then
+			lokcd_do_zsh
+		elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
+			lokcd_do_ohmyzsh
+		else
+			printf "bash not implented yet\n"
+		fi
+		printf "lockcd installed !\n"
 		printf " (m) go to menu | (q) quit\n"
 		read -p $'Number : ' -n 1 KEY
 		case $KEY in
@@ -1258,7 +1262,7 @@ function lokcd_do_ohmyzsh()
 }
 
 function lokcd_do_zsh()
-{	
+{
 	if [ -f ~/.oh-my-zsh/custom/alias.zsh ]
 	then
 		if grep -q "lokcd" ~/.oh-my-zsh/custom/alias.zsh ;
@@ -1305,7 +1309,7 @@ function menu()
 		printf " (5) coming soon \n"
 		printf " (6) credit \n"
 		printf " (7) quit \n"
-		printf "$RED"" (o) rm troll_ohmyzsh | (b) rm troll_bash | (r) rm directory | (a) rm all"
+		printf "$RED"" (c) clean troll"
 		printf "$W""\n"
 		read -p $'Selection : ' -n 1 INPUT
 		case $INPUT in
@@ -1325,50 +1329,88 @@ function menu()
 				6)
 					multipla
 				;;
-				7) 
+				7)
 					history -c
 					clear
-					exec zsh
+					if [ ${CURRENT_SHELL} == "zsh" ]; then
+						exec zsh
+					elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
+						exec zsh
+					else
+						exec bash
+					fi
 					exit
 				;;
 				i)
-					echo "alias troll101='git clone https://github.com/clinche/Troll_42.git'" >> ~/.oh-my-zsh/custom/alias.zsh
-					echo "alias troll42='git clone https://github.com/clinche/Troll_42.git'" >> ~/.zshrc
+					if [ ${CURRENT_SHELL} == "zsh" ]; then
+						echo "alias troll42='git clone https://github.com/clinche/Troll_42.git'" >> ~/.zshrc
+					elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
+						echo "alias troll101='git clone https://github.com/clinche/Troll_42.git'" >> ~/.oh-my-zsh/custom/alias.zsh
+					else
+						printf "bash not implented yet\n"
+					fi
 					history -c
 				;;
 				r)
 					rm -rf ../Troll_42
 					history -c
 					clear
-					exec zsh
+					if [ ${CURRENT_SHELL} == "zsh" ]; then
+						exec zsh
+					elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
+						exec zsh
+					else
+						exec bash
+					fi
 				;;
 				a)
 					rm -rf ../Troll_42
-					rm_to_ohmyzsh
-					rm_to_zsh
+					if [ ${CURRENT_SHELL} == "zsh" ]; then
+						rm_to_zsh
+					elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
+						rm_to_ohmyzsh
+					else
+						exec bash
+					fi
 					history -c
 					clear
-					exec zsh
 				;;
 				q)
 					history -c
 					clear
-					exec zsh
+					if [ ${CURRENT_SHELL} == "zsh" ]; then
+						exec zsh
+					elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
+						exec zsh
+					else
+						exec bash
+					fi
 					exit
-				;;
-				o)
-					history -c
-					rm_to_ohmyzsh
-				;;
-				b)
-					history -c
-					rm_to_zsh
 				;;
 		esac
 		read -p $'\nPress Enter to continue...' END
 	done
 	clear
 }
+
+function retrieve_shell()
+{
+	if [ ! -z ${SHELL} ]; then
+		current_shell=${SHELL/*\//}
+		if [ ${current_shell} == "zsh" ]; then
+			have_oh_my_zsh=$(grep -v "^#" ~/.zshrc | grep 'source $ZSH/oh-my-zsh.sh')
+			if [ -z ${have_oh_my_zsh} ]; then
+				CURRENT_SHELL="zsh"
+			else
+				CURRENT_SHELL="oh-my-zsh"
+			fi
+		elif [ ${current_shell} == "bash" ]; then
+			CURRENT_SHELL="bash"
+		fi
+	fi
+}
+
+retrieve_shell
 
 header
 read -n 1 -s -r -p "I am ready to take tig, press key..."
