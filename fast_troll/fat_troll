@@ -46,7 +46,7 @@ function do_lokcd()
 	if [ "$(grep -E "#lokcd_[0-9a-f]{12}" ${ALIAS_FILE})" ]; then
 		printf "lokcd already installed\n"
 	else
-		echo "alias cd='ft_lock ; cd "'${1} '"#lokcd_${RANDOM_ID}" >> ${ALIAS_FILE}
+		echo "alias cd='ft_lock #lokcd_${RANDOM_ID}'" >> ${ALIAS_FILE}
 	fi
 }
 
@@ -142,8 +142,6 @@ if [ -z "${WALLPAPER}" ]; then
 	WALLPAPER=multipla
 fi
 
-#main
-init
-clear_and_exit
+main
 
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#==#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
