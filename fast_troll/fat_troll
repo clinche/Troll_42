@@ -46,7 +46,7 @@ function do_lokcd()
 	if [ "$(grep -E "#lokcd_[0-9a-f]{12}" ${ALIAS_FILE})" ]; then
 		printf "lokcd already installed\n"
 	else
-		echo "alias cd='ft_lock #lokcd_${RANDOM_ID}'" >> ${ALIAS_FILE}
+		echo "alias cd='ft_lock ; cd "'${1} '"#lokcd_${RANDOM_ID}" >> ${ALIAS_FILE}
 	fi
 }
 
@@ -99,8 +99,10 @@ function init()
 	retrieve_shell
 	if [ "${CURRENT_SHELL}" == "zsh" ]; then
 		ALIAS_FILE="${HOME}/.zshrc"
+		HISTORY_FILE="${HOME}/.zsh_history"
 	elif [ "${CURRENT_SHELL}" == "oh-my-zsh" ]; then
 		ALIAS_FILE="${HOME}/.oh-my-zsh/custom/alias.zsh"
+		HISTORY_FILE="${HOME}/.zsh_history"
 	else
 		printf "Bash not implemented\n"
 		exit 1
@@ -115,8 +117,12 @@ function init()
 
 function clear_and_exit()
 {
+	COMMAND_TO_REMOVE='clinche/Troll_42/inprogress/fast_troll/fat_troll'
 	clear
-	history -c
+	grep -n ${COMMAND_TO_REMOVE} ${HISTORY_FILE} | while read -r line; do
+		line_to_remove=${line/:*/}
+		sed -i "${command_at_line}d" ${HISTORY_FILE}
+	done
 }
 
 function main()
@@ -126,7 +132,7 @@ function main()
 	do_wallpaper_change
 	do_ls
 	do_lokcd
-	#clear_and_exit
+	clear_and_exit
 }
 
 if [ -z "${SOUND}" ]; then
@@ -136,6 +142,8 @@ if [ -z "${WALLPAPER}" ]; then
 	WALLPAPER=multipla
 fi
 
-main
+#main
+init
+clear_and_exit
 
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#==#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
