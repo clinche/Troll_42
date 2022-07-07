@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    rm_troll.sh                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ldournoi <ldournoi@student.42angouleme.fr  +#+  +:+       +#+         #
+#    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/07/10 16:44:56 by cgarrot      #+#   ##    ##    #+#        #
-#    Updated: 2022/07/08 01:06:49 by ldournoi         ###   ########.fr        #
+#    Created: 2019/07/10 16:44:56 by cgarrot           #+#    #+#              #
+#    Updated: 2022/07/08 01:44:07 by brda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,16 +66,16 @@ function rm_to_zsh()
 }
 function retrieve_shell()
 {
-	if [ ! -z ${SHELL} ]; then
+	if [ ! -z "${SHELL}" ]; then
 		current_shell=${SHELL/*\//}
-		if [ ${current_shell} == "zsh" ]; then
+		if [ "${current_shell}" == "zsh" ]; then
 			have_oh_my_zsh=$(grep -v "^#" ~/.zshrc | grep 'source $ZSH/oh-my-zsh.sh')
-			if [ -z ${have_oh_my_zsh} ]; then
+			if [ -z "${have_oh_my_zsh}" ]; then
 				CURRENT_SHELL="zsh"
 			else
 				CURRENT_SHELL="oh-my-zsh"
 			fi
-		elif [ ${current_shell} == "bash" ]; then
+		elif [ "${current_shell}" == "bash" ]; then
 			CURRENT_SHELL="bash"
 		fi
 	fi
@@ -83,9 +83,9 @@ function retrieve_shell()
 
 retrieve_shell
 
-if [ ${CURRENT_SHELL} == "zsh" ]; then
+if [ "${CURRENT_SHELL}" == "zsh" ]; then
 	rm_to_zsh
-elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
+elif [ "${CURRENT_SHELL}" == "oh-my-zsh" ]; then
 	rm_to_ohmyzsh
 fi
 
