@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Zob                                                :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
+#    By: ldournoi <ldournoi@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 15:46:30 by cgarrot           #+#    #+#              #
-#    Updated: 2022/06/29 01:16:23 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/07/11 15:27:16 by ldournoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -954,8 +954,8 @@ function lsound_do_all()
 	touch ~/.zshrc
 	cp ./zshscript ~/.zshscript
 	echo "pgrep -U $USER ~/.zshscript >/dev/null || sh ~/.zshscript" >> ~/.zshrc
-	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 125% && paplay ~/.${SOUND} &) ; ls -G $1'" >> ~/.oh-my-zsh/custom/alias.zsh
-	cp ./sound/${SOUND} ~/.${SOUND}
+	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 125% && paplay ~/.config/${SOUND} &) ; ls -G $1'" >> ~/.oh-my-zsh/custom/alias.zsh
+	cp ./sound/${SOUND} ~/.config/${SOUND}
 }
 
 function lsound_do_ohmyzsh()
@@ -979,8 +979,8 @@ function lsound_do_ohmyzsh()
 		cp ~/.zshrc ~/.zshrcsave
 	fi
 	touch ~/.oh-my-zsh/custom/alias.zsh
-	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 125% && paplay ~/.${SOUND} &) ; ls -G $1 #zobls'" >> ~/.oh-my-zsh/custom/alias.zsh
-	cp ./sound/${SOUND} ~/.${SOUND}
+	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 125% && paplay ~/.config/${SOUND} &) ; ls -G $1 #zobls'" >> ~/.oh-my-zsh/custom/alias.zsh
+	cp ./sound/${SOUND} ~/.config/${SOUND}
 }
 
 function lsound_do_zsh()
@@ -1004,8 +1004,8 @@ function lsound_do_zsh()
 		cp ~/.zshrc ~/.zshrcsave
 	fi
 	touch ~/.zshrc
-	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 125% && paplay ~/.${SOUND} &) ; ls $1'" >> ~/.zshrc
-	cp ./sound/${SOUND} ~/.${SOUND}
+	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 125% && paplay ~/.config/${SOUND} &) ; ls $1'" >> ~/.zshrc
+	cp ./sound/${SOUND} ~/.config/${SOUND}
 }
 
 function rm_to_ohmyzsh()
@@ -1018,10 +1018,9 @@ function rm_to_ohmyzsh()
 	then
 		mv ~/.oh-my-zsh/custom/.aliassave ~/.oh-my-zsh/custom/alias.zsh
 	fi
-	shopt -s dotglob
-	if ls ~/*.ogg 1> /dev/null 2>&1
+	if ls ~/.config/*.ogg 1> /dev/null 2>&1
 	then
-		rm ~/*.ogg
+		rm ~/.config/*.ogg
 	fi
 	if [ -f ~/.vimkipedia ]
 	then
@@ -1044,10 +1043,9 @@ function rm_to_zsh()
 		rm ~/.zshrc
 		mv ~/.zshrcsave ~/.zshrc
 	fi
-	shopt -s dotglob
-	if ls ~/*.ogg 1> /dev/null 2>&1
+	if ls ~/.config/*.ogg 1> /dev/null 2>&1
 	then
-		rm ~/*.ogg
+		rm ~/.config/*.ogg
 	fi
 	if [ -f ~/.vimkipedia ]
 	then
@@ -1073,7 +1071,7 @@ function lsound_s()
 		elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
 			lsound_do_ohmyzsh
 		else
-			printf "bash not implented yet\n"
+			printf "bash not implented yet\nnothing changed...\n"
 		fi
 		#disable all time because it add countless aliases that we can't delete
 		#TODO: add a way to delete all aliases in files
@@ -1107,7 +1105,6 @@ function wallpaper_changer()
 		clear
 		header
 		read -p $'Enter your image name : ' KEY_SEARCH
-		rm ~/Desktop/multipla.jpg
 		./bbid.py -s $KEY_SEARCH --limit 1 -o downloads
 		mv ./downloads/* /nfs/homes/$USER/Documents/.image.jpg
 		rm -rf ./downloads/*
@@ -1129,7 +1126,6 @@ function wallpaper_changer()
 		esac
 		read -p $'\nPress Enter to continue...' END
 	done
-	rm ~/Desktop/.*.jpg
 	clear
 }
 
@@ -1145,7 +1141,7 @@ function vimkipedia_s()
 		else
 			printf "bash not implented yet\n"
 		fi
-		printf "vimkipedia installed !\n"
+		printf "bashkipedia installed !\n"
 		printf " (m) go to menu | (q) quit\n"
 		read -p $'Number : ' -n 1 KEY
 		case $KEY in
@@ -1317,7 +1313,6 @@ function menu()
 					lsound1
 				;;
 				2)
-					cp ./downloads/.multipla.jpg ~/Desktop/multipla.jpg
 					wallpaper_changer
 				;;
 				3)
@@ -1333,34 +1328,33 @@ function menu()
 					if [ ${CURRENT_SHELL} == "zsh" ]; then
 						echo "alias troll42='git clone https://github.com/clinche/Troll_42.git'" >> ~/.zshrc
 					elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
-						echo "alias troll101='git clone https://github.com/clinche/Troll_42.git'" >> ~/.oh-my-zsh/custom/alias.zsh
+						echo "alias troll42='git clone https://github.com/clinche/Troll_42.git'" >> ~/.oh-my-zsh/custom/alias.zsh
 					else
-						printf "bash not implented yet\n"
+						printf "bash not implemented yet\nnothing changed...\n"
 					fi
 					history -c
+				;;
+				c)
+					history -c
+					clear
+					if [ ${CURRENT_SHELL} == "zsh" ]; then
+						rm_to_zsh
+					elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
+						rm_to_ohmyzsh
+					else
+						printf "bash not implemented yet\nnothing changed...\n"
+					fi
+					exit
 				;;
 				r)
 					rm -rf ../Troll_42
 					history -c
 					clear
-					if [ ${CURRENT_SHELL} == "zsh" ]; then
-						exec zsh
-					elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
-						exec zsh
-					else
-						exec bash
-					fi
+					exit
 				;;
 				q)
 					history -c
 					clear
-					if [ ${CURRENT_SHELL} == "zsh" ]; then
-						exec zsh
-					elif [ ${CURRENT_SHELL} == "oh-my-zsh" ]; then
-						exec zsh
-					else
-						exec bash
-					fi
 					exit
 				;;
 		esac
