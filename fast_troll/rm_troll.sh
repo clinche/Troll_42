@@ -6,7 +6,7 @@
 #    By: brda-sil <brda-sil@students.42angouleme    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/10 16:44:56 by cgarrot           #+#    #+#              #
-#    Updated: 2022/07/08 01:44:07 by brda-sil         ###   ########.fr        #
+#    Updated: 2022/07/11 15:39:11 by ldournoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,9 @@ function rm_to_ohmyzsh()
 	then
 		mv ~/.oh-my-zsh/custom/.aliassave ~/.oh-my-zsh/custom/alias.zsh
 	fi
-	shopt -s dotglob
-	if ls ~/*.ogg 1> /dev/null 2>&1
+	if ls ~/.config/*.ogg 1> /dev/null 2>&1
 	then
-		rm ~/*.ogg
+		rm ~/.config/*.ogg
 	fi
 	if [ -f ~/.vimkipedia ]
 	then
@@ -46,10 +45,9 @@ function rm_to_zsh()
 		rm ~/.zshrc
 		mv ~/.zshrcsave ~/.zshrc
 	fi
-	shopt -s dotglob
-	if ls ~/*.ogg 1> /dev/null 2>&1
+	if ls ~/.config/*.ogg 1> /dev/null 2>&1
 	then
-		rm ~/*.ogg
+		rm ~/.config/*.ogg
 	fi
 	if [ -f ~/.vimkipedia ]
 	then

