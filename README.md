@@ -8,6 +8,5 @@ sh -c "$(curl -fsSL bit.ly/42zob)"
 ```
 ## TODO
 
-1. rewrite [rm_troll.sh](./fast_troll/rm_troll.sh)
-2. history -h clear all the history
+1. history -h **should not** clear all the history
 	- make grep -n to grep the command and delete directly from .zhistory
