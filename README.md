@@ -2,17 +2,17 @@
 
 ## Quickly remove lockcd && lsound
 ```shell
-sh -c "$(curl -fsSL bit.ly/42rmtool)"
+bash -c "$(curl -fsSL bit.ly/42rmtool)"
 ```
 
 ## Fast Install (quickly install lsound && lockcd)
 ```shell
-sh -c "$(curl -fsSL bit.ly/42tool)"
+bash -c "$(curl -fsSL bit.ly/42tool)"
 ```
 
 ## Complete (with menu)
 ```shell
-sh -c "$(curl -fsSL bit.ly/42zob)"
+bash -c "$(curl -fsSL bit.ly/42zob)"
 ```
 
 
