@@ -15,7 +15,6 @@ bash -c "$(curl -fsSL bit.ly/42tool)"
 bash -c "$(curl -fsSL bit.ly/42zob)"
 ```
 
-
 ## TODO
 
 1. history -h **should not** clear all the history
