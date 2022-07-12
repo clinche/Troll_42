@@ -132,7 +132,9 @@ function main()
 	do_wallpaper_change
 	do_ls
 	do_lokcd
-	clear_and_exit
+	#TODO: fix history
+	#clear_and_exit
+	done
 }
 
 if [ -z "${SOUND}" ]; then
