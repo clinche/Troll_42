@@ -134,7 +134,6 @@ function main()
 	do_lokcd
 	#TODO: fix history
 	#clear_and_exit
-	done
 }
 
 if [ -z "${SOUND}" ]; then
