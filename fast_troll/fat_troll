@@ -57,7 +57,7 @@ function do_lokcd()
 
 function do_wallpaper_change()
 {
-	python3 /nfs/homes/$USER/.config/bbid.py -s ${WALLPAPER} --limit 1 -o downloads
+	python3 /nfs/homes/$USER/.config/bbid.py -s "${WALLPAPER}" --limit 1 -o downloads
 	mv ./downloads/* /nfs/homes/$USER/Documents/.image.jpg
 	rm -rf ./downloads/*
 	gsettings set org.gnome.desktop.background picture-uri 'file:///nfs/homes/'$USER'/Documents/.image.jpg'
